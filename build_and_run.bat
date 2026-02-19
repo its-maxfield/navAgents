@@ -4,7 +4,7 @@ setlocal EnableExtensions EnableDelayedExpansion
 cd /d "%~dp0"
 
 set EXE=game.exe
-set SRC=main.cpp
+set SRC=*.cpp
 set INC=include
 set LIB=lib
 

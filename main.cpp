@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "AgentGraph.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -10,7 +11,11 @@ int main(void)
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "NEW WINDOW TEST");
+    const float gridPointSize = 2.0f;
+
+    AgentGraph myGraph(screenWidth, screenHeight);
+
+    InitWindow(screenWidth, screenHeight, "NavAgents");
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
@@ -30,6 +35,8 @@ int main(void)
             ClearBackground(RAYWHITE);
 
             DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+
+            DrawCircle(screenWidth/2, screenHeight/2, gridPointSize, RED);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
