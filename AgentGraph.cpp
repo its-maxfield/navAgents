@@ -8,6 +8,27 @@ AgentGraph::AgentGraph(int width, int height)
     graphSize = BuildGraph(width, height);
 }
 
+std::vector<int> AgentGraph::FindPath(int startNode, int endNode)
+{
+    //Public find function, calls private search.
+    return PathSearch(startNode, endNode);
+}
+
+std::vector<int> AgentGraph::GetNodeLocation(int nodeID)
+{
+    return nodeLocation.at(nodeID);
+}
+
+std::vector<int> AgentGraph::GetNodeConnections(int nodeID)
+{
+    return graphConnections[nodeID];
+}
+
+int AgentGraph::GetNodeCost(int nodeID)
+{
+    return nodeCost.at(nodeID);
+}
+
 int AgentGraph::BuildGraph(int width, int height)
 {
     std::cout << "Building graph..." << std::endl;
@@ -51,24 +72,14 @@ int AgentGraph::BuildGraph(int width, int height)
     return nodes;
 }
 
-int AgentGraph::GetNodeCost(int nodeID)
-{
-    return nodeCost.at(nodeID);
-}
-
-std::vector<int> AgentGraph::GetNodeConnections(int nodeID)
-{
-    return graphConnections[nodeID];
-}
-
-std::vector<int> AgentGraph::GetNodeLocation(int nodeID)
-{
-    return nodeLocation.at(nodeID);
-}
-
 void AgentGraph::AddNode(int nodeID, const std::vector<int>& connections, int x, int y, int cost)
 {
     graphConnections.push_back(connections);
     nodeCost[nodeID] = cost;
     nodeLocation[nodeID] = {x, y}; //Store location based on ID.
+}
+
+std::vector<int> AgentGraph::PathSearch(int currNode, int endNode)
+{
+    //TODO: Path search for nodes.
 }
