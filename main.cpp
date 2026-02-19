@@ -1,6 +1,8 @@
 #include "raylib.h"
 #include "AgentGraph.h"
 
+#include <string>
+
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -8,8 +10,8 @@ int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenWidth = 1000;
+    const int screenHeight = 650;
 
     const float gridPointSize = 2.0f;
 
@@ -34,9 +36,12 @@ int main(void)
 
             ClearBackground(RAYWHITE);
 
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
-            DrawCircle(screenWidth/2, screenHeight/2, gridPointSize, RED);
+            for(int i = 0; i < myGraph.graphSize; i++)
+            {
+                std::vector<int> loc = myGraph.GetNodeLocation(i);
+                DrawCircle(loc[0], loc[1], gridPointSize, RED);
+                DrawText(std::to_string(myGraph.GetNodeCost(i)).c_str(), loc[0], loc[1], 10, BLACK);
+            }
 
         EndDrawing();
         //----------------------------------------------------------------------------------
