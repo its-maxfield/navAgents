@@ -13,6 +13,7 @@ class AgentGraph
         AgentGraph(int width, int height);
         std::vector<int> FindPath(int startNode, int endNode); //Public find calls private search.
         std::vector<int> GetNodeLocation(int nodeID);
+        std::vector<int> GetNodeConnections(int nodeID);
         int GetNodeCost(int nodeID);
         //Vars
         int graphSize;

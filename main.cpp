@@ -39,6 +39,12 @@ int main(void)
             for(int i = 0; i < myGraph.graphSize; i++)
             {
                 std::vector<int> loc = myGraph.GetNodeLocation(i);
+                std::vector<int> connections = myGraph.GetNodeConnections(i);
+                for(auto j : connections)
+                {
+                    std::vector<int> connLoc = myGraph.GetNodeLocation(j);
+                    DrawLine(loc[0], loc[1], connLoc[0], connLoc[1], GRAY);
+                }
                 DrawCircle(loc[0], loc[1], gridPointSize, RED);
                 DrawText(std::to_string(myGraph.GetNodeCost(i)).c_str(), loc[0], loc[1], 10, BLACK);
             }

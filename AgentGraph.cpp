@@ -32,10 +32,15 @@ int AgentGraph::BuildGraph(int width, int height)
             std::vector<int> connections;
             connections.reserve(4);
 
-            if (gridC > 0)        connections.push_back(gridR * cols + (gridC - 1));
-            if (gridC + 1 < cols) connections.push_back(gridR * cols + (gridC + 1));
-            if (gridR > 0)        connections.push_back((gridR - 1) * cols + gridC);
-            if (gridR + 1 < rows) connections.push_back((gridR + 1) * cols + gridC);
+            int selection = distr(gen);
+            if (gridC > 0 && selection < 14)        
+                connections.push_back(gridR * cols + (gridC - 1));
+            if (gridC + 1 < cols) 
+                connections.push_back(gridR * cols + (gridC + 1));
+            if (gridR > 0 && selection < 28)        
+                connections.push_back((gridR - 1) * cols + gridC);
+            if (gridR + 1 < rows && selection > 33) 
+                connections.push_back((gridR + 1) * cols + gridC);
 
             AddNode(nodeID, connections, x, y, distr(gen)); 
             nodes++;
@@ -49,6 +54,11 @@ int AgentGraph::BuildGraph(int width, int height)
 int AgentGraph::GetNodeCost(int nodeID)
 {
     return nodeCost.at(nodeID);
+}
+
+std::vector<int> AgentGraph::GetNodeConnections(int nodeID)
+{
+    return graphConnections[nodeID];
 }
 
 std::vector<int> AgentGraph::GetNodeLocation(int nodeID)
