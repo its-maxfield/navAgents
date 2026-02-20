@@ -83,3 +83,11 @@ std::vector<int> AgentGraph::PathSearch(int currNode, int endNode)
 {
     //TODO: Path search for nodes.
 }
+
+float AgentGraph::Heuristic(int nodeA, int nodeB)
+{
+    std::vector<int> locA = GetNodeLocation(nodeA);
+    std::vector<int> locB = GetNodeLocation(nodeB);
+
+    return 0.0f;
+}

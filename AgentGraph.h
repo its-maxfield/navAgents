@@ -24,6 +24,7 @@ class AgentGraph
         int BuildGraph(int width, int height); //Build the base graph.
         void AddNode(int nodeID, const std::vector<int>& connections, int x, int y, int cost);
         std::vector<int> PathSearch(int currNode, int endNode);
+        float Heuristic(int nodeA, int nodeB);
         
         //Vars
         const int spacing = 30;
